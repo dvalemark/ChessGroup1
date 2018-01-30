@@ -10,27 +10,13 @@ public class Game {
 
     public Game() {
         this.gameboard = new HashMap<>();
-        addSquares();
+        fillMap();
     }
 
-    private void addSquares() {
-        Color color;
+    private void fillMap() {
         for (int y = 0; y < WIDTH; y++) {
             for (int x = 0; x < WIDTH; x++) {
-                if (y % 2 == 0) {
-                    if (x % 2 != 0) {
-                        color = Color.WHITE;
-                    } else {
-                        color = Color.BLACK;
-                    }
-                } else {
-                    if (x % 2 == 0) {
-                        color = Color.WHITE;
-                    } else {
-                        color = Color.BLACK;
-                    }
-                }
-                gameboard.put(new Position(x, y, color), null);
+                gameboard.put(new Position(x, y), null);
             }
         }
     }
