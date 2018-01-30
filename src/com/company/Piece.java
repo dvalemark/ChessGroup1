@@ -1,5 +1,12 @@
 package com.company;
 
 public class Piece {
- private int value;
+    Kind kind;
+    Color color;
+
+    public Piece(Kind kind, Color color){
+        this.kind = kind;
+        this.color = color;
+    }
+
 }
