@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.lang.reflect.Array;
+import java.util.LinkedList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -28,7 +30,9 @@ public class Render extends JPanel {
             }
 
         }
+
     }
+
 
 
 }

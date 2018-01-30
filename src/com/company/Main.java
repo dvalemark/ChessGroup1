@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         JFrame frame = new JFrame();
         frame.setSize(600, 600);
-        frame.getContentPane().add(new com.company.Render());
+        frame.getContentPane().add(new Render());
         frame.setLocationRelativeTo(null);
         frame.setBackground(Color.LIGHT_GRAY);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
