@@ -1,20 +1,20 @@
 package com.company;
 
 
-import com.googlecode.lanterna.TerminalFacade;
-import com.googlecode.lanterna.screen.*;
-import com.googlecode.lanterna.input.Key;
-import com.googlecode.lanterna.terminal.Terminal;
-
+import javax.swing.*;
+import java.awt.Color;
 import java.io.IOException;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
-        Gameboard gameboard = new Gameboard();
-        Screen screen;
-        screen = TerminalFacade.createScreen();
-        screen.startScreen();
-        gameboard.drawSquares(screen);
+    public static void main(String[] args) {
+        JFrame frame = new JFrame();
+        frame.setSize(600, 600);
+        frame.getContentPane().add(new com.company.Render());
+        frame.setLocationRelativeTo(null);
+        frame.setBackground(Color.LIGHT_GRAY);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
     }
+
 }
