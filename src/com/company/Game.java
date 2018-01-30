@@ -1,15 +1,14 @@
 package com.company;
 
-import com.googlecode.lanterna.terminal.Terminal;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Gameboard {
+public class Game {
     private Map<Position, Piece> gameboard;
     final int WIDTH = 8;
 
-    public Gameboard() {
+    public Game() {
         this.gameboard = new HashMap<>();
         addSquares();
     }
@@ -34,17 +33,6 @@ public class Gameboard {
                 gameboard.put(new Position(x, y, color), null);
             }
         }
-    }
-
-    public void drawSquares(com.googlecode.lanterna.screen.Screen screen) {
-        for (Map.Entry<Position, Piece> entry : gameboard.entrySet()) {
-            if (entry.getKey().color == Color.WHITE) {
-                screen.putString(entry.getKey().x, entry.getKey().y, " ", Terminal.Color.BLACK, Terminal.Color.WHITE);
-            } else {
-                screen.putString(entry.getKey().x, entry.getKey().y, " ", Terminal.Color.BLACK, Terminal.Color.BLACK);
-            }
-        }
-        screen.refresh();
     }
 
 }
