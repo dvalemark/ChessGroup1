@@ -20,4 +20,8 @@ public class Move {
         String string = this.toY + ":" + this.toX + " Value: " + this.value;
         return string;
     }
+
+    public int getValue() {
+        return value;
+    }
 }

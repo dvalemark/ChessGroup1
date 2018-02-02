@@ -5,7 +5,7 @@ public class MoveHelper {
 
 
     public Piece isForwardLeft(int y, int x, int range, int direction) {
-        return spots[y - range * direction][x - range].getPiece();
+        return spots[y + range * direction][x - range].getPiece();
     }
 
     public Piece isForwardRight(int y, int x, int range, int direction) {

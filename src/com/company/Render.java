@@ -4,14 +4,13 @@ import java.awt.*;
 import java.awt.Color;
 import javax.swing.*;
 
- public class Render extends JPanel{
+
+public class Render extends JPanel{
     final static int WIDTH = 8;
     final static int HEIGHT = 8;
     JFrame frame = new JFrame("CHESS");
 
     public void paint(Graphics g){
-
-
         g.fillRect(100, 100, 400, 400);
         for(int i = 100; i <= 400; i+=100){
             for(int j = 100; j <= 400; j+=100){
@@ -40,12 +39,12 @@ import javax.swing.*;
                 if (GameBoard.spots[y][x].getPiece() != null) {
                     Piece piece = GameBoard.spots[y][x].getPiece();
                     JLabel label = new JLabel(piece.kind.toString().charAt(0)+" "+piece.getColor());
-                    label.setBounds(x*80,y*80,50,50);
+                    label.setBounds(x*100,y*100,50,50);
                     frame.add(label);
-                    frame.repaint();
                     }
                 }
             }
+
         }
 
 

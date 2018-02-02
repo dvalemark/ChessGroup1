@@ -1,13 +1,10 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class GameBoard {
     private final int PAWN = 8;
     private final int WIDTH = 8;
-
     public static Spot[][] spots;
 
 
@@ -39,6 +36,23 @@ public class GameBoard {
         for (int i = 0; i < PAWN; i++) {
             spots[6][i].setPiece(new Pawn(Color.WHITE));
         }
+    }
+
+    public void analyzeMoves(Color color) {
+        ArrayList<Move> moves = new ArrayList<>();
+        System.out.println("STARTING TO ANALYZE MOVES FOR PLAYER " + color);
+        for (int y = 0; y < WIDTH; y++) {
+            for (int x = 0; x < WIDTH; x++) {
+                if (spots[y][x].getPiece() != null && spots[y][x].getPiece().getColor() == color) {
+                    Piece piece = spots[y][x].getPiece();
+                    moves.addAll(piece.checkMoves(y, x));
+                }
+            }
+        }
+        Move bestMove = moves
+                .stream()
+                .max(Comparator.comparing(Move::getValue)).orElseThrow(NoSuchElementException::new);
+        makeMove(bestMove);
     }
 
     ////PRINT PIECES ON ALL OCCUPIED SPOTS///
