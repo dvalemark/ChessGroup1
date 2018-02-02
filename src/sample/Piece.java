@@ -1,7 +1,6 @@
-package com.company;
+package sample;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Piece {
     private Color color;
@@ -26,6 +25,6 @@ public class Piece {
         return moves;
     }
     public String toString(){
-       return this.color + " " + this.kind;
+        return this.color + " " + this.kind;
     }
 }

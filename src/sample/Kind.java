@@ -1,4 +1,4 @@
-package com.company;
+package sample;
 
 public enum Kind {
     PAWN, KING;

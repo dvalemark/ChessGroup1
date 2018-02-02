@@ -1,4 +1,4 @@
-package com.company;
+package sample;
 
 public class MoveHelper {
     private Spot[][] spots = GameBoard.spots;
