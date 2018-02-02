@@ -5,12 +5,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Game {
-
+    Render render = new Render();
 
     public void run() {
         GameBoard gameBoard = new GameBoard();
-        gameBoard.makeMove(new Move(0, 6, 2, 6, 6));
-        GameBoard.spots[2][6].getPiece().checkMoves(2, 6);
-        GameBoard.spots[6][5].getPiece().checkMoves(6, 5);
+        render.drawBoard();
+        gameBoard.makeMove(new Move(0,6,4,4,4));
+        render.renderPieces();
+
     }
 }

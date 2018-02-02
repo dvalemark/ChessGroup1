@@ -30,12 +30,12 @@ public class GameBoard {
     ///ADD PIECES TO CORRECT SLOTS
     private void addPieces() {
         ////ADD WHITE PIECES///////////
-        spots[0][5].setPiece(new King(Color.BLACK));
+        spots[0][4].setPiece(new King(Color.BLACK));
         for (int i = 0; i < PAWN; i++) {
             spots[1][i].setPiece(new Pawn(Color.BLACK));
         }
         ////ADD BLACK PIECES///////////
-        spots[7][5].setPiece(new King(Color.WHITE));
+        spots[7][4].setPiece(new King(Color.WHITE));
         for (int i = 0; i < PAWN; i++) {
             spots[6][i].setPiece(new Pawn(Color.WHITE));
         }
