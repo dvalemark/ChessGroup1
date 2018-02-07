@@ -9,19 +9,20 @@ public class Game {
 
     public void run() throws InterruptedException {
         GameBoard gameBoard = new GameBoard();
+        MoveHelper moveHelper = new MoveHelper();
         Thread.sleep(1000);
         render.updatePieces();
 
         while (true) {
             render.updatePieces();
-            Thread.sleep(1000);
-            gameBoard.analyzeMoves(Color.WHITE);
+            Thread.sleep(3000);
+            moveHelper.analyzeMoves(Color.WHITE);
             render.updatePieces();
-            Thread.sleep(1000);
-            gameBoard.analyzeMoves(Color.BLACK);
+            Thread.sleep(3000);
+            moveHelper.analyzeMoves(Color.BLACK);
             render.updatePieces();
         }
 
-   }
+    }
 
 }

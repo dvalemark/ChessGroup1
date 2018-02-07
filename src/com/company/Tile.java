@@ -1,14 +1,14 @@
 package com.company;
 
-public class Spot {
+public class Tile {
 
     private Piece piece;
 
-    public Spot() {
+    public Tile() {
         this.piece = null;
     }
 
-    public Spot(Piece piece) {
+    public Tile(Piece piece) {
         this.piece = piece;
     }
 

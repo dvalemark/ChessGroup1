@@ -3,21 +3,20 @@ package com.company;
 import java.util.ArrayList;
 
 public class Pawn extends Piece {
-    private boolean isFirstMove;
 
     public Pawn(Color color) {
         super(color);
         this.kind = Kind.PAWN;
-        this.isFirstMove = true;
         this.value = 1;
-        this.unicode = unicode();
+        this.imagePath = imagePath();
     }
 
-    private String unicode() {
+
+    private String imagePath() {
         if(getColor() == Color.WHITE){
-            return "\u2659 ";
+            return " C:\\Users\\disav\\Documents\\Java\\ChessGroup1\\src\\image\\Wpawn.png";
         }else{
-            return "\u265F ";
+            return " C:\\Users\\disav\\Documents\\Java\\ChessGroup1\\src\\image\\Wpawn.png";
         }
     }
 
@@ -27,37 +26,43 @@ public class Pawn extends Piece {
         ArrayList<Move> moves = new ArrayList<>();
         int direction;
         int value = 0;
+        int minBoundryX =1;
+        int maxBoundryX =6;
+        int maxBoundryY =7;
+        int minBoundryY =0;
+
         if (this.getColor() == Color.WHITE) {
             direction = -1;
         } else {
             direction = 1;
         }
         ////IF PAWN HASN'T MOVE BEFORE
-        if (isFirstMove) {
-            int i = 1;
-            while (moveHelper.isForward(y, x, i, direction) == null && i != 3) {
-                moves.add(new Move(value, y, (y + i*direction), x, x));
-                i++;
+        if (firstMove) {
+            int range = 1;
+            while (moveHelper.directionForward(y, x, range, direction) == null && range < 3) {
+                moves.add(new Move(value, y, (y + range*direction), x, x));
+                range++;
             }
             ////NORMAL FORWARD MOVE
         } else {
-            for (int i = 1; i <= 1; i++) {
-                if (moveHelper.isForward(y, x, i, direction) == null) {
-                    moves.add(new Move(value, y, (y + i*direction), x, x));
+            for (int range = 1; range <= 1; range++) {
+                if (moveHelper.directionForward(y, x, range, direction) == null) {
+                    moves.add(new Move(value, y, (y + range*direction), x, x));
                 }
             }
         }
         //////THESE ARE THE POSSIBLE ATTACK MOVES
-        if (x >= 1) {
-            Piece possibleEnemy = moveHelper.isForwardLeft(y, x, 1, direction);
+        if (x >= minBoundryX) {
+            Piece possibleEnemy = moveHelper.directionForwardLeft(y, x, 1, direction);
             if (possibleEnemy != null && possibleEnemy.getColor() != this.getColor()) {
                 value = possibleEnemy.getValue();
                 moves.add(new Move(value, y, y + direction, x, x - 1));
                 value = 0;
             }
         }
-        if(x <= 6) {
-            Piece possibleEnemy = moveHelper.isForwardRight(y, x, 1, direction);
+
+        if(x <= maxBoundryX) {
+            Piece possibleEnemy = moveHelper.directionForwardRight(y, x, 1, direction);
             if (possibleEnemy != null && possibleEnemy.getColor() != this.getColor()) {
                 value = possibleEnemy.getValue();
                 moves.add(new Move(value, y, y + direction, x, x + 1));

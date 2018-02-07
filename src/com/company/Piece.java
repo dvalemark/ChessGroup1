@@ -5,9 +5,10 @@ import java.util.List;
 
 public class Piece {
     private Color color;
-    String unicode;
+    String imagePath;
     int value;
     Kind kind;
+    boolean firstMove= true;
 
     public Piece(Color color) {
         this.color = color;
