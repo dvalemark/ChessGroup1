@@ -9,20 +9,19 @@ public class Game {
 
     public void run() throws InterruptedException {
         GameBoard gameBoard = new GameBoard();
-        render.drawBoard();
-        render.renderPieces();
+        Thread.sleep(1000);
+        render.updatePieces();
 
-        /*
         while (true) {
-            render.renderPieces();
-            Thread.sleep(3000);
+            render.updatePieces();
+            Thread.sleep(1000);
             gameBoard.analyzeMoves(Color.WHITE);
-            render.renderPieces();                  ////LOGICS ARE WORKING THE COMPUTER MOVES BUT THE RENDER UPDATE ON SCREEN IS HORRIBLE
-            Thread.sleep(3000);
+            render.updatePieces();
+            Thread.sleep(1000);
             gameBoard.analyzeMoves(Color.BLACK);
-            render.renderPieces();
+            render.updatePieces();
         }
-        */
+
    }
 
 }

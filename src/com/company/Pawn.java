@@ -10,6 +10,15 @@ public class Pawn extends Piece {
         this.kind = Kind.PAWN;
         this.isFirstMove = true;
         this.value = 1;
+        this.unicode = unicode();
+    }
+
+    private String unicode() {
+        if(getColor() == Color.WHITE){
+            return "\u2659 ";
+        }else{
+            return "\u265F ";
+        }
     }
 
     @Override

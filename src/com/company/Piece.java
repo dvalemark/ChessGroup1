@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Piece {
     private Color color;
+    String unicode;
     int value;
     Kind kind;
 
