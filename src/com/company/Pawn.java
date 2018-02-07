@@ -12,11 +12,13 @@ public class Pawn extends Piece {
     }
 
 
+
     private String imagePath() {
         if(getColor() == Color.WHITE){
             return " C:\\Users\\disav\\Documents\\Java\\ChessGroup1\\src\\image\\Wpawn.png";
         }else{
             return " C:\\Users\\disav\\Documents\\Java\\ChessGroup1\\src\\image\\Wpawn.png";
+
         }
     }
 
@@ -38,10 +40,12 @@ public class Pawn extends Piece {
         }
         ////IF PAWN HASN'T MOVE BEFORE
         if (firstMove) {
+
             int range = 1;
             while (moveHelper.directionForward(y, x, range, direction) == null && range < 3) {
                 moves.add(new Move(value, y, (y + range*direction), x, x));
                 range++;
+
             }
             ////NORMAL FORWARD MOVE
         } else {

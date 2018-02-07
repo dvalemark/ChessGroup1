@@ -4,14 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Piece {
+    public boolean firstMove = true;
     private Color color;
     String imagePath;
     int value;
     Kind kind;
-    boolean firstMove= true;
+
+    public boolean getFirstMove(){
+        return firstMove;
+    }
 
     public Piece(Color color) {
         this.color = color;
+    }
+
+    public Kind getKind() {
+        return kind;
     }
 
     public int getValue() {
