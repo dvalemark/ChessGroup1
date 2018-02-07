@@ -3,21 +3,19 @@ package com.company;
 import java.util.ArrayList;
 
 public class Pawn extends Piece {
-    private boolean isFirstMove;
 
     public Pawn(Color color) {
         super(color);
         this.kind = Kind.PAWN;
-        this.isFirstMove = true;
         this.value = 1;
-        this.unicode = unicode();
+        this.imagePath = imagePath();
     }
 
-    private String unicode() {
+    private String imagePath() {
         if(getColor() == Color.WHITE){
-            return "\u2659 ";
+            return "C:\\Users\\Sara Walter\\Desktop\\ChessGroup1\\src\\images\\white_pawn.png";
         }else{
-            return "\u265F ";
+            return "C:\\Users\\Sara Walter\\Desktop\\ChessGroup1\\src\\images\\black_pawn.png";
         }
     }
 
@@ -33,7 +31,7 @@ public class Pawn extends Piece {
             direction = 1;
         }
         ////IF PAWN HASN'T MOVE BEFORE
-        if (isFirstMove) {
+        if (firstMove) {
             int i = 1;
             while (moveHelper.isForward(y, x, i, direction) == null && i != 3) {
                 moves.add(new Move(value, y, (y + i*direction), x, x));

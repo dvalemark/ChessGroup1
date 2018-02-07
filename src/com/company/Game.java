@@ -14,10 +14,10 @@ public class Game {
 
         while (true) {
             render.updatePieces();
-            Thread.sleep(1000);
+            Thread.sleep(3000);
             gameBoard.analyzeMoves(Color.WHITE);
             render.updatePieces();
-            Thread.sleep(1000);
+            Thread.sleep(3000);
             gameBoard.analyzeMoves(Color.BLACK);
             render.updatePieces();
         }

@@ -4,13 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Piece {
+    public boolean firstMove = true;
     private Color color;
-    String unicode;
+    String imagePath;
     int value;
     Kind kind;
 
     public Piece(Color color) {
         this.color = color;
+    }
+
+    public Kind getKind() {
+        return kind;
     }
 
     public int getValue() {
