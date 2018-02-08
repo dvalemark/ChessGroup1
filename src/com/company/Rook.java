@@ -24,7 +24,7 @@ public class Rook extends Piece {
         MoveHelper moveHelper = new MoveHelper();
         int tempValue = 0;
         int range = 1;
-        do {
+        while (moveHelper.checkMoveWithinBounds(y, x + range * direction) &&  moveHelper.horizontal(y,x,range, direction) == null){
                 Piece possibleEnemy = moveHelper.horizontal(y, x, 1, direction);
                 if (possibleEnemy == null) {
                     moves.add(new Move(tempValue, y, y, x, (x + range * direction)));
@@ -32,7 +32,7 @@ public class Rook extends Piece {
                 } else {
                     moves.add(new Move(possibleEnemy.value, y, y, x, (x + range * direction)));
                 }
-        } while (moveHelper.checkMoveWithinBounds(y, x + range * direction) &&  moveHelper.horizontal(y,x,range, direction) == null);
+        } ;
     }
 }
 
