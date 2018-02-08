@@ -13,7 +13,7 @@ public class Game {
 
         Thread.sleep(1000);
         render.updatePieces();
-
+      //  moveHelper.movePiece(new Move(0,3,7,4,1));
         while (true) {
             render.updatePieces();
             Thread.sleep(3000);

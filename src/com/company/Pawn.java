@@ -16,11 +16,7 @@ public class Pawn extends Piece {
         MoveHelper moveHelper = new MoveHelper();
         ArrayList<Move> moves = new ArrayList<>();
         int direction;
-        int value = 0;
-        int minBoundryX =1;
-        int maxBoundryX =6;
-        int maxBoundryY =7;
-        int minBoundryY =0;
+        int tempValue = 0;
 
         if (this.getColor() == Color.WHITE) {
             direction = -1;
@@ -31,35 +27,39 @@ public class Pawn extends Piece {
         if (firstMove) {
 
             int range = 1;
-            while (moveHelper.directionForward(y, x, range, direction) == null && range != 3) {
-                moves.add(new Move(value, y, (y + range*direction), x, x));
+            while (moveHelper.vertical(y, x, range, direction) == null && range != 3) {
+                if (moveHelper.checkMoveWithinBounds((y + range * direction), x)) {
+                    moves.add(new Move(tempValue, y, (y + range * direction), x, x));
+                }
                 range++;
 
             }
             ////NORMAL FORWARD MOVE
         } else {
             for (int range = 1; range <= 1; range++) {
-                if (moveHelper.directionForward(y, x, range, direction) == null) {
-                    moves.add(new Move(value, y, (y + range*direction), x, x));
+                if (moveHelper.vertical(y, x, range, direction) == null) {
+                    if (moveHelper.checkMoveWithinBounds((y + range * direction), x)) {
+                        moves.add(new Move(tempValue, y, (y + range * direction), x, x));
+                    }
                 }
             }
         }
         //////THESE ARE THE POSSIBLE ATTACK MOVES
-        if (x >= minBoundryX) {
-            Piece possibleEnemy = moveHelper.directionForwardLeft(y, x, 1, direction);
+        if (moveHelper.checkMoveWithinBounds((y + direction), x - 1)) {
+            Piece possibleEnemy = moveHelper.diagonalLeft(y, x, 1, direction);
             if (possibleEnemy != null && possibleEnemy.getColor() != this.getColor()) {
-                value = possibleEnemy.getValue();
-                moves.add(new Move(value, y, y + direction, x, x - 1));
-                value = 0;
+                tempValue = possibleEnemy.getValue();
+                moves.add(new Move(tempValue, y, y + direction, x, x - 1));
+                tempValue = 0;
             }
         }
 
-        if(x <= maxBoundryX) {
-            Piece possibleEnemy = moveHelper.directionForwardRight(y, x, 1, direction);
+        if (moveHelper.checkMoveWithinBounds((y + direction), x + 1)) {
+            Piece possibleEnemy = moveHelper.diagonalRight(y, x, 1, direction);
             if (possibleEnemy != null && possibleEnemy.getColor() != this.getColor()) {
-                value = possibleEnemy.getValue();
-                moves.add(new Move(value, y, y + direction, x, x + 1));
-                value = 0;
+                tempValue = possibleEnemy.getValue();
+                moves.add(new Move(tempValue, y, y + direction, x, x + 1));
+                tempValue = 0;
             }
         }
         ////PRINT ALL POSSIBLE MOVES FOR THIS PIECE

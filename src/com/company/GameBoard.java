@@ -38,6 +38,7 @@ public class GameBoard {
         for (int i = 0; i < PAWN; i++) {
             tile[6][i].setPiece(new Pawn(Color.WHITE));
         }
+        tile[3][4].setPiece(new Rook(Color.WHITE));
     }
 
     ///MOVE ONE PIECE

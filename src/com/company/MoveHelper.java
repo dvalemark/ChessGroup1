@@ -7,19 +7,32 @@ import java.util.NoSuchElementException;
 
 public class MoveHelper {
     private Tile[][] tile = GameBoard.tile;
+    int direction;
+    int minBoundry =0;
+    int maxBoundry =7;
     private int WIDTH =8;
 
 
-    public Piece directionForwardLeft(int y, int x, int range, int direction) {
-        return tile[y + range * direction][x - range].getPiece();
+    public Boolean checkMoveWithinBounds(int y, int x){
+            if(y > maxBoundry || y < minBoundry || x > maxBoundry || x < minBoundry ){
+                return false;
+            }
+            return true;
     }
 
-    public Piece directionForwardRight(int y, int x, int range, int direction) {
+    public Piece diagonalLeft(int y, int x, int range, int direction) {
+
+        return tile[y + range * direction][x - range].getPiece();
+    }
+    public Piece diagonalRight(int y, int x, int range, int direction) {
         return tile[y + range * direction][x + range].getPiece();
     }
 
-    public Piece directionForward(int y, int x, int range, int direction) {
+    public Piece vertical(int y, int x, int range, int direction) {
         return tile[y + (range * direction)][x].getPiece();
+    }
+    public Piece horizontal(int y, int x, int range, int direction) {
+        return tile[y][x+ (range * direction)].getPiece();
     }
 
     public void analyzeMoves(Color color) {
