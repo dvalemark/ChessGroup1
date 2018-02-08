@@ -13,8 +13,8 @@ public class Pawn extends Piece {
 
     @Override
     public ArrayList<Move> checkMoves(int y, int x) {
+        moves.clear();
         MoveHelper moveHelper = new MoveHelper();
-        ArrayList<Move> moves = new ArrayList<>();
         int direction;
         int tempValue = 0;
 
@@ -63,8 +63,7 @@ public class Pawn extends Piece {
             }
         }
         ////PRINT ALL POSSIBLE MOVES FOR THIS PIECE
-        moves.stream().forEach(System.out::println);
-        System.out.println("PIECE DONE");
         return moves;
+
     }
 }

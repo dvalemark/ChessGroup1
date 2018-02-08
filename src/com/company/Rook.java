@@ -13,9 +13,10 @@ public class Rook extends Piece {
 
     @Override
     public ArrayList<Move> checkMoves(int y, int x) {
-        ArrayList<Move> moves = new ArrayList<>();
+        moves.clear();
         checkHorizontalMoves(y, x, 1);
         checkHorizontalMoves(y, x, -1);
+        System.out.println(moves);
         return moves;
     }
 
@@ -23,9 +24,7 @@ public class Rook extends Piece {
         MoveHelper moveHelper = new MoveHelper();
         int tempValue = 0;
         int range = 1;
-        Boolean outOfBounds = true;
         do {
-            System.out.println(range);
                 Piece possibleEnemy = moveHelper.horizontal(y, x, 1, direction);
                 if (possibleEnemy == null) {
                     moves.add(new Move(tempValue, y, y, x, (x + range * direction)));
@@ -33,7 +32,7 @@ public class Rook extends Piece {
                 } else {
                     moves.add(new Move(possibleEnemy.value, y, y, x, (x + range * direction)));
                 }
-        } while (moveHelper.horizontal(y,x,range, direction) == null || moveHelper.checkMoveWithinBounds(y, x + range * direction));
+        } while (moveHelper.checkMoveWithinBounds(y, x + range * direction) &&  moveHelper.horizontal(y,x,range, direction) == null);
     }
 }
 
