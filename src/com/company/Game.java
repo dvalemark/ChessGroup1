@@ -5,10 +5,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Game {
+    GameBoard gameBoard = new GameBoard();
     Render render = new Render();
+    MoveHelper moveHelper = new MoveHelper();
 
     public void run() throws InterruptedException {
-        MoveHelper moveHelper = new MoveHelper();
+
         Thread.sleep(1000);
         render.updatePieces();
 

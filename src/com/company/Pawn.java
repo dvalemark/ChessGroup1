@@ -42,7 +42,7 @@ public class Pawn extends Piece {
         if (firstMove) {
 
             int range = 1;
-            while (moveHelper.directionForward(y, x, range, direction) == null && range < 3) {
+            while (moveHelper.directionForward(y, x, range, direction) == null && range != 3) {
                 moves.add(new Move(value, y, (y + range*direction), x, x));
                 range++;
 

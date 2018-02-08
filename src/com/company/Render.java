@@ -37,12 +37,7 @@ public class Render extends JFrame {
                     }
                 }
             }
-        /*
-        for(JLabel label: labelList){
-            panel.add(label);
-            panel.revalidate();
-        }
-        */
+
             panel.revalidate();
             panel.repaint();
             frame.revalidate();
