@@ -33,7 +33,7 @@ public class Rook extends Piece {
                 } else {
                     moves.add(new Move(possibleEnemy.value, y, y, x, (x + range * direction)));
                 }
-        } while (moveHelper.horizontal(y,x,range, direction) == null || moveHelper.checkMoveWithinBounds(y, x + range * direction));
+        } while (moveHelper.checkMoveWithinBounds(y, x + range * direction) &&  moveHelper.horizontal(y,x,range, direction) == null);
     }
 }
 
