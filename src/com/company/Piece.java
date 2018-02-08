@@ -36,16 +36,16 @@ public class Piece {
         switch (kind) {
             case PAWN:
                 if (getColor() == Color.WHITE) {
-                    imagePath = "C:\\Users\\Sara Walter\\Desktop\\ChessGroup1\\src\\image\\white_pawn.png";
+                    imagePath = "C:\\Users\\disav\\Documents\\Java\\ChessGroup1\\src\\image\\chess_piece_white_pawn.png";
                 } else {
-                    imagePath = "C:\\Users\\Sara Walter\\Desktop\\ChessGroup1\\src\\image\\black_pawn.png";
+                    imagePath = "C:\\Users\\disav\\Documents\\Java\\ChessGroup1\\src\\image\\black_pawn.png";
                 }
                 break;
             case KING:
                 if (getColor() == Color.WHITE) {
-                    imagePath = "C:\\Users\\Sara Walter\\Desktop\\ChessGroup1\\src\\image\\black_king.png";
+                    imagePath = "C:\\Users\\disav\\Documents\\Java\\ChessGroup1\\src\\image\\chess_piece_white_king.png";
                 } else {
-                    imagePath = "C:\\Users\\Sara Walter\\Desktop\\ChessGroup1\\src\\image\\black_king.png";
+                    imagePath = "C:\\Users\\disav\\Documents\\Java\\ChessGroup1\\src\\image\\chess_piece_black_king.png";
                 }
                 break;
 

@@ -31,8 +31,8 @@ public class MoveHelper {
     public Piece vertical(int y, int x, int range, int direction) {
         return tile[y + (range * direction)][x].getPiece();
     }
-    public Piece horizontal(int y, int x, int range, int direction) {
-        return tile[y][x+ (range * direction)].getPiece();
+    public Piece horizontal(int y, int x, int range) {
+        return tile[y][x+ range].getPiece();
     }
 
     public void analyzeMoves(Color color) {
