@@ -1,5 +1,5 @@
 package com.company;
 
 public enum Kind {
-    PAWN, KING;
+    PAWN, KING, ROCK;
 }
