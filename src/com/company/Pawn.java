@@ -8,18 +8,7 @@ public class Pawn extends Piece {
         super(color);
         this.kind = Kind.PAWN;
         this.value = 1;
-        this.imagePath = imagePath();
-    }
-
-
-
-    private String imagePath() {
-        if(getColor() == Color.WHITE){
-            return " C:\\Users\\disav\\Documents\\Java\\ChessGroup1\\src\\image\\Wpawn.png";
-        }else{
-            return " C:\\Users\\disav\\Documents\\Java\\ChessGroup1\\src\\image\\Wpawn.png";
-
-        }
+        imagePath();
     }
 
     @Override
