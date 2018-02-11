@@ -27,7 +27,7 @@ public class Pawn extends Piece {
         if (firstMove) {
 
             int range = 1;
-            while (moveHelper.vertical(y, x, range, direction) == null && range != 3) {
+            while (moveHelper.vertical(y, x, range,direction) == null && range != 3) {
                 if (moveHelper.checkMoveWithinBounds((y + range * direction), x)) {
                     moves.add(new Move(tempValue, y, (y + range * direction), x, x));
                 }
@@ -37,7 +37,7 @@ public class Pawn extends Piece {
             ////NORMAL FORWARD MOVE
         } else {
             for (int range = 1; range <= 1; range++) {
-                if (moveHelper.vertical(y, x, range, direction) == null) {
+                if (moveHelper.vertical(y, x, range,direction) == null) {
                     if (moveHelper.checkMoveWithinBounds((y + range * direction), x)) {
                         moves.add(new Move(tempValue, y, (y + range * direction), x, x));
                     }

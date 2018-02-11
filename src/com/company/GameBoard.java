@@ -28,13 +28,14 @@ public class GameBoard {
 
     ///ADD PIECES TO CORRECT SLOTS
     private void addPieces() {
-        ////ADD WHITE PIECES///////////
+        ////ADD BLACK PIECES///////////
         tile[0][4].setPiece(new King(Color.BLACK));
         for (int i = 0; i < PAWN; i++) {
             tile[1][i].setPiece(new Pawn(Color.BLACK));
         }
-        ////ADD BLACK PIECES///////////
+        ////ADD WHITE PIECES///////////
         tile[7][4].setPiece(new King(Color.WHITE));
+
         for (int i = 0; i < PAWN; i++) {
             tile[6][i].setPiece(new Pawn(Color.WHITE));
         }

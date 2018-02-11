@@ -49,6 +49,12 @@ public class Piece {
                 }
                 break;
 
+            case ROOK:
+                if(getColor() == Color.WHITE){
+                    imagePath = "C:\\Users\\disav\\Documents\\Java\\ChessGroup1\\src\\image\\chess_piece_white_rook.png";
+            }
+                break;
+
             default:
                 break;
         }
