@@ -33,13 +33,16 @@ public class GameBoard {
         for (int i = 0; i < PAWN; i++) {
             tile[1][i].setPiece(new Pawn(Color.BLACK));
         }
+        tile[0][0].setPiece(new Rook(Color.BLACK));
+        tile[0][7].setPiece(new Rook(Color.BLACK));
         ////ADD WHITE PIECES///////////
         tile[7][4].setPiece(new King(Color.WHITE));
 
         for (int i = 0; i < PAWN; i++) {
             tile[6][i].setPiece(new Pawn(Color.WHITE));
         }
-        tile[3][4].setPiece(new Rook(Color.WHITE));
+        tile[7][0].setPiece(new Rook(Color.WHITE));
+        tile[7][7].setPiece(new Rook(Color.WHITE));
     }
 
     ///MOVE ONE PIECE

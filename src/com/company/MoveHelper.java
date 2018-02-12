@@ -49,7 +49,7 @@ public class MoveHelper {
         Move bestMove = moves
                 .stream()
                 .max(Comparator.comparing(Move::getValue)).orElseThrow(NoSuchElementException::new);
-
+        System.out.println(color + " moves " +moves.size());
         movePiece(bestMove);
     }
 

@@ -44,7 +44,7 @@ public class Piece {
                 break;
             case KING:
                 if (getColor() == Color.WHITE) {
-                    imagePath = getClass().getResource("/resources/images/black_king.png");
+                    imagePath = getClass().getResource("/resources/images/white_king.png");
                 } else {
                     imagePath = getClass().getResource("/resources/images/black_king.png");
                 }
@@ -52,8 +52,10 @@ public class Piece {
 
             case ROOK:
                 if(getColor() == Color.WHITE){
-                    imagePath = getClass().getResource("/resources/images/black_king.png");
-            }
+                    imagePath = getClass().getResource("/resources/images/white_rook.png");
+            }else {
+                    imagePath = getClass().getResource("/resources/images/black_rook.png");
+                }
                 break;
 
             default:
