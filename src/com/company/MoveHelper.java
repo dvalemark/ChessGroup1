@@ -57,7 +57,7 @@ public class MoveHelper {
         Piece pieceToMove = tile[move.fromY][move.fromX].getPiece();
         tile[move.fromY][move.fromX].setPiece(null);
         tile[move.toY][move.toX].setPiece(pieceToMove);
-      //  System.out.println("MOVED " + pieceToMove.toString() + " TO " + move.toY + ":" + move.toX);
+      
 
 
         pieceToMove.firstMove = false;
