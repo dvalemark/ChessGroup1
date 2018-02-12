@@ -1,12 +1,13 @@
 package com.company;
 
+import java.net.URL;
 import java.util.ArrayList;
 
 public class Piece {
     ArrayList<Move> moves;
     public boolean firstMove;
     private Color color;
-    String imagePath;
+    URL imagePath;
     int value;
     Kind kind;
 
@@ -36,22 +37,22 @@ public class Piece {
         switch (kind) {
             case PAWN:
                 if (getColor() == Color.WHITE) {
-                    imagePath = "C:\\Users\\disav\\Documents\\Java\\ChessGroup1\\src\\image\\chess_piece_white_pawn.png";
+                    imagePath = getClass().getResource("/resources/images/white_pawn.png");
                 } else {
-                    imagePath = "C:\\Users\\disav\\Documents\\Java\\ChessGroup1\\src\\image\\black_pawn.png";
+                    imagePath = getClass().getResource("/resources/images/black_pawn.png");
                 }
                 break;
             case KING:
                 if (getColor() == Color.WHITE) {
-                    imagePath = "C:\\Users\\disav\\Documents\\Java\\ChessGroup1\\src\\image\\chess_piece_white_king.png";
+                    imagePath = getClass().getResource("/resources/images/black_king.png");
                 } else {
-                    imagePath = "C:\\Users\\disav\\Documents\\Java\\ChessGroup1\\src\\image\\chess_piece_black_king.png";
+                    imagePath = getClass().getResource("/resources/images/black_king.png");
                 }
                 break;
 
             case ROOK:
                 if(getColor() == Color.WHITE){
-                    imagePath = "C:\\Users\\disav\\Documents\\Java\\ChessGroup1\\src\\image\\chess_piece_white_rook.png";
+                    imagePath = getClass().getResource("/resources/images/black_king.png");
             }
                 break;
 
