@@ -21,7 +21,6 @@ public class Rook extends Piece {
         checkVerticalMoves(y, x, -1);
 
 
-        System.out.println(moves);
         return moves;
     }
 //en metod som adderar moves en som söker?
