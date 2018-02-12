@@ -24,7 +24,7 @@ public class Rook extends Piece {
         System.out.println(moves);
         return moves;
     }
-//en metod som adderar moves en som söker?
+
 
 
 
