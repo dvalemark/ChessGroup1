@@ -13,8 +13,8 @@ public class Pawn extends Piece {
 
     @Override
     public ArrayList<Move> checkMoves(int y, int x) {
+        moves.clear();
         MoveHelper moveHelper = new MoveHelper();
-        ArrayList<Move> moves = new ArrayList<>();
         int direction;
         int tempValue = 0;
 
@@ -27,7 +27,7 @@ public class Pawn extends Piece {
         if (firstMove) {
 
             int range = 1;
-            while (moveHelper.vertical(y, x, range, direction) == null && range != 3) {
+            while (moveHelper.vertical(y, x, range,direction) == null && range != 3) {
                 if (moveHelper.checkMoveWithinBounds((y + range * direction), x)) {
                     moves.add(new Move(tempValue, y, (y + range * direction), x, x));
                 }
@@ -37,7 +37,7 @@ public class Pawn extends Piece {
             ////NORMAL FORWARD MOVE
         } else {
             for (int range = 1; range <= 1; range++) {
-                if (moveHelper.vertical(y, x, range, direction) == null) {
+                if (moveHelper.vertical(y, x, range,direction) == null) {
                     if (moveHelper.checkMoveWithinBounds((y + range * direction), x)) {
                         moves.add(new Move(tempValue, y, (y + range * direction), x, x));
                     }
@@ -63,8 +63,7 @@ public class Pawn extends Piece {
             }
         }
         ////PRINT ALL POSSIBLE MOVES FOR THIS PIECE
-        moves.stream().forEach(System.out::println);
-        System.out.println("PIECE DONE");
         return moves;
+
     }
 }

@@ -31,13 +31,12 @@ public class MoveHelper {
     public Piece vertical(int y, int x, int range, int direction) {
         return tile[y + (range * direction)][x].getPiece();
     }
-    public Piece horizontal(int y, int x, int range, int direction) {
-        return tile[y][x+ (range * direction)].getPiece();
+    public Piece horizontal(int y, int x, int range) {
+        return tile[y][x+ range].getPiece();
     }
 
     public void analyzeMoves(Color color) {
         ArrayList<Move> moves = new ArrayList<>();
-        System.out.println("STARTING TO ANALYZE MOVES FOR PLAYER " + color);
         for (int y = 0; y < WIDTH; y++) {
             for (int x = 0; x <WIDTH; x++) {
                 if (tile[y][x].getPiece() != null && tile[y][x].getPiece().getColor() == color) {
@@ -58,7 +57,7 @@ public class MoveHelper {
         Piece pieceToMove = tile[move.fromY][move.fromX].getPiece();
         tile[move.fromY][move.fromX].setPiece(null);
         tile[move.toY][move.toX].setPiece(pieceToMove);
-        System.out.println("MOVED " + pieceToMove.toString() + " TO " + move.toY + ":" + move.toX);
+      
 
 
         pieceToMove.firstMove = false;
