@@ -69,6 +69,7 @@ public class Rook extends Piece {
                     moves.add(new Move(possiblePiece.value, y, y + range, x, x));
                     foundPiece = true;
                 }
+
             }
             range += direction;
         }
