@@ -23,7 +23,7 @@ public class Rook extends Piece {
 
         return moves;
     }
-//en metod som adderar moves en som söker?
+
 
 
 

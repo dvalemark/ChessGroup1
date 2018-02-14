@@ -1,2 +1,4 @@
 workspace.xml
 out/
+ChessGroup1.iml
+.idea/*.xml
