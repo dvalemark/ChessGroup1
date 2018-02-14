@@ -1,6 +1,8 @@
 package com.company;
 
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,23 +10,31 @@ public class Game {
     GameBoard gameBoard = new GameBoard();
     Render render = new Render();
     MoveHelper moveHelper = new MoveHelper();
+    Color color = Color.WHITE;
 
     public void run() throws InterruptedException {
-
-        Thread.sleep(1000);
+        Thread.sleep(500);
         render.updatePieces();
-      //  moveHelper.movePiece(new Move(0,3,7,4,1));
-        while (true) {
-            render.updatePieces();
-            Thread.sleep(3000);
+        render.nextMove.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                moveHelper.analyzeMoves(color);
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+                render.updatePieces();
+                if(color == Color.WHITE){
+                    color = Color.BLACK;
+                }else{
+                    color = color.WHITE;
 
-            moveHelper.analyzeMoves(Color.WHITE);
-            render.updatePieces();
-            Thread.sleep(3000);
-            moveHelper.analyzeMoves(Color.BLACK);
+                }
 
-            render.updatePieces();
-        }
+            }
+        });
+
 
     }
 

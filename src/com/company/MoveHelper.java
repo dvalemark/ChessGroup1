@@ -35,6 +35,21 @@ public class MoveHelper {
         return tile[y][x+ range].getPiece();
     }
 
+    //////BISHOP METHODS///////////////
+    public Piece upLeft(int y, int x, int range) {
+        return tile[y - range][x - range].getPiece();
+    }
+    public Piece upRight(int y, int x, int range) {
+        return tile[y - range][x + range].getPiece();
+    }
+    public Piece downRight(int y, int x, int range) {
+        return tile[y + range][x + range].getPiece();
+    }
+    public Piece downLeft(int y, int x, int range) {
+        return tile[y + range][x - range].getPiece();
+    }
+    ///////////////////////////////////////
+
     public void analyzeMoves(Color color) {
         ArrayList<Move> moves = new ArrayList<>();
         for (int y = 0; y < WIDTH; y++) {
@@ -46,19 +61,23 @@ public class MoveHelper {
             }
         }
         Collections.shuffle(moves);
-        Move bestMove = moves
-                .stream()
-                .max(Comparator.comparing(Move::getValue)).orElseThrow(NoSuchElementException::new);
-        System.out.println(color + " moves " +moves.size());
-        movePiece(bestMove);
+        if(moves.size() > 1) {
+            Move bestMove = moves
+                    .stream()
+                    .max(Comparator.comparing(Move::getValue)).orElseThrow(NoSuchElementException::new);
+            movePiece(bestMove);
+        }else {
+            movePiece(moves.get(0));
+        }
     }
+
+
 
     public void movePiece(Move move) {
         Piece pieceToMove = tile[move.fromY][move.fromX].getPiece();
         tile[move.fromY][move.fromX].setPiece(null);
         tile[move.toY][move.toX].setPiece(pieceToMove);
-      
-
+        System.out.println("MOVED " + pieceToMove.toString() + " TO " + move.toY + ":" + move.toX);
 
         pieceToMove.firstMove = false;
 
