@@ -35,6 +35,9 @@ public class GameBoard {
         }
         tile[0][0].setPiece(new Rook(Color.BLACK));
         tile[0][7].setPiece(new Rook(Color.BLACK));
+        tile[0][1].setPiece(new Bishop(Color.BLACK));
+        tile[0][6].setPiece(new Bishop(Color.BLACK));
+
         ////ADD WHITE PIECES///////////
         tile[7][4].setPiece(new King(Color.WHITE));
 
@@ -43,6 +46,8 @@ public class GameBoard {
         }
         tile[7][0].setPiece(new Rook(Color.WHITE));
         tile[7][7].setPiece(new Rook(Color.WHITE));
+        tile[7][1].setPiece(new Bishop(Color.WHITE));
+        tile[7][6].setPiece(new Bishop(Color.WHITE));
     }
 
     ///MOVE ONE PIECE

@@ -2,6 +2,8 @@ package com.company;
 
 import java.awt.*;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.stream.Stream;
 import javax.swing.*;
@@ -13,6 +15,7 @@ public class Render extends JFrame {
     final static int HEIGHT = 8;
     JFrame frame;
     Board panel = new Board();
+    JButton nextMove = new JButton("Move");
 
     public Render() {
         gui();
@@ -36,7 +39,6 @@ public class Render extends JFrame {
                 }
             }
         }
-
         panel.revalidate();
         panel.repaint();
         frame.revalidate();
@@ -46,7 +48,7 @@ public class Render extends JFrame {
 
     public void gui() {
         frame = new JFrame("CHESS");
-        frame.setSize(620, 650);
+        frame.setSize(700, 650);
         frame.setLocationRelativeTo(null);
         frame.setBackground(Color.LIGHT_GRAY);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -54,5 +56,12 @@ public class Render extends JFrame {
         frame.setVisible(true);
         panel.setLayout(null);
         frame.add(panel);
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.add(nextMove);
+        frame.add(buttonPanel, BorderLayout.EAST);
+
     }
+
+
+
 }

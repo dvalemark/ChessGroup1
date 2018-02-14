@@ -49,15 +49,29 @@ public class MoveHelper {
         Move bestMove = moves
                 .stream()
                 .max(Comparator.comparing(Move::getValue)).orElseThrow(NoSuchElementException::new);
-        System.out.println(color + " moves " +moves.size());
         movePiece(bestMove);
     }
+//////BISHOP METHODS///////////////
+    public Piece upLeft(int y, int x, int range) {
+        return tile[y - range][x - range].getPiece();
+    }
+    public Piece upRight(int y, int x, int range) {
+        return tile[y - range][x + range].getPiece();
+    }
+    public Piece downRight(int y, int x, int range) {
+        return tile[y + range][x + range].getPiece();
+    }
+    public Piece downLeft(int y, int x, int range) {
+        return tile[y + range][x - range].getPiece();
+    }
+  ///////////////////////////////////////
+
 
     public void movePiece(Move move) {
         Piece pieceToMove = tile[move.fromY][move.fromX].getPiece();
         tile[move.fromY][move.fromX].setPiece(null);
         tile[move.toY][move.toX].setPiece(pieceToMove);
-      //  System.out.println("MOVED " + pieceToMove.toString() + " TO " + move.toY + ":" + move.toX);
+        System.out.println("MOVED " + pieceToMove.toString() + " TO " + move.toY + ":" + move.toX);
 
 
         pieceToMove.firstMove = false;
