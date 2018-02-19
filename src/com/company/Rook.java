@@ -12,7 +12,7 @@ public class Rook extends Piece {
     }
 
     @Override
-    public ArrayList<Move> checkMoves(int y, int x) {
+    public ArrayList<Move> listPossibleMoves(int y, int x) {
         moves.clear();
 
         checkHorizontalMoves(y,x,1);
@@ -35,17 +35,7 @@ public class Rook extends Piece {
         while (moveHelper.checkMoveWithinBounds(y, x + range) && !foundPiece) {
 
             Piece possiblePiece = moveHelper.horizontal(y, x, range);
-            if (possiblePiece == null) {
-                moves.add(new Move(tempValue, y, y, x, (x + range)));
-            } else {
-                if (possiblePiece.getColor() == this.getColor()) {
-                    foundPiece = true;
-                } else {
-                    moves.add(new Move(possiblePiece.value, y, y, x, x + range));
-                    foundPiece = true;
-
-                }
-            }
+            foundPiece = checkMove(y,y,x,x+range,possiblePiece);
             range += direction;
         }
 
@@ -54,22 +44,12 @@ public class Rook extends Piece {
 
     public void checkVerticalMoves(int y, int x, int direction) {
         MoveHelper moveHelper = new MoveHelper();
-        int tempValue = 0;
         int range = direction;
         Boolean foundPiece = false;
         while (moveHelper.checkMoveWithinBounds(y + range, x) && !foundPiece) {
             Piece possiblePiece = moveHelper.vertical(y, x, range, 1);
-            if (possiblePiece == null) {
-                moves.add(new Move(tempValue, y, y + range, x, x));
-            } else {
-                if (possiblePiece.getColor() == this.getColor()) {
-                    foundPiece = true;
-                } else {
-                    moves.add(new Move(possiblePiece.value, y, y + range, x, x));
-                    foundPiece = true;
-                }
+            foundPiece = checkMove(y,y+range,x,x,possiblePiece);
 
-            }
             range += direction;
         }
     }

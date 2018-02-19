@@ -33,6 +33,22 @@ public class Piece {
         return color;
     }
 
+    public boolean checkMove(int y,int toY, int x, int toX, Piece possiblePiece){
+        boolean foundPiece = false;
+        int tempvalue = 0;
+        if (possiblePiece == null) {
+            moves.add(new Move(tempvalue, y, toY, x, toX));
+        } else {
+            if (possiblePiece.getColor() == this.getColor()) {
+                foundPiece = true;
+            } else {
+                moves.add(new Move(possiblePiece.value, y, toY, x, toX));
+                foundPiece = true;
+            }
+        }
+        return foundPiece;
+    }
+
     public void imagePath() {
         switch (kind) {
             case PAWN:
@@ -72,7 +88,7 @@ public class Piece {
 
     }
 
-    public ArrayList<Move> checkMoves(int y, int x){
+    public ArrayList<Move> listPossibleMoves(int y, int x){
         ArrayList<Move> moves = new ArrayList<>();
         return moves;
     }

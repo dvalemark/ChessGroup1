@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Pawn extends Piece {
 
+
     public Pawn(Color color) {
         super(color);
         this.kind = Kind.PAWN;
@@ -12,58 +13,64 @@ public class Pawn extends Piece {
     }
 
     @Override
-    public ArrayList<Move> checkMoves(int y, int x) {
+    public ArrayList<Move> listPossibleMoves(int y, int x) {
         moves.clear();
-        MoveHelper moveHelper = new MoveHelper();
-        int direction;
-        int tempValue = 0;
 
-        if (this.getColor() == Color.WHITE) {
-            direction = -1;
-        } else {
-            direction = 1;
-        }
-        ////IF PAWN HASN'T MOVE BEFORE
-        if (firstMove) {
+        int direction = getDirection();
+        movePawn(y,x,direction);
 
-            int range = 1;
-            while (moveHelper.vertical(y, x, range,direction) == null && range != 3) {
-                if (moveHelper.checkMoveWithinBounds((y + range * direction), x)) {
-                    moves.add(new Move(tempValue, y, (y + range * direction), x, x));
-                }
-                range++;
-
-            }
-            ////NORMAL FORWARD MOVE
-        } else {
-            for (int range = 1; range <= 1; range++) {
-                if (moveHelper.vertical(y, x, range,direction) == null) {
-                    if (moveHelper.checkMoveWithinBounds((y + range * direction), x)) {
-                        moves.add(new Move(tempValue, y, (y + range * direction), x, x));
-                    }
-                }
-            }
-        }
-        //////THESE ARE THE POSSIBLE ATTACK MOVES
-        if (moveHelper.checkMoveWithinBounds((y + direction), x - 1)) {
-            Piece possibleEnemy = moveHelper.diagonalLeft(y, x, 1, direction);
-            if (possibleEnemy != null && possibleEnemy.getColor() != this.getColor()) {
-                tempValue = possibleEnemy.getValue();
-                moves.add(new Move(tempValue, y, y + direction, x, x - 1));
-                tempValue = 0;
-            }
-        }
-
-        if (moveHelper.checkMoveWithinBounds((y + direction), x + 1)) {
-            Piece possibleEnemy = moveHelper.diagonalRight(y, x, 1, direction);
-            if (possibleEnemy != null && possibleEnemy.getColor() != this.getColor()) {
-                tempValue = possibleEnemy.getValue();
-                moves.add(new Move(tempValue, y, y + direction, x, x + 1));
-                tempValue = 0;
-            }
-        }
         ////PRINT ALL POSSIBLE MOVES FOR THIS PIECE
         return moves;
 
     }
+
+    private void movePawn(int y, int x, int direction) {
+        MoveHelper moveHelper = new MoveHelper();
+        int range =1;
+        if (this.getFirstMove()) {
+            while (moveHelper.vertical(y, x, range, direction) == null && range != 3) {
+                checkMove(y, y + range * direction, x, x);
+                range++;
+            }
+            ////NORMAL FORWARD MOVE
+        } else {
+                if (moveHelper.vertical(y, x, range, direction) == null) {
+                    checkMove(y, y + range * direction, x, x);
+            }
+        }
+        //////THESE ARE THE POSSIBLE ATTACK MOVES
+        if (moveHelper.checkMoveWithinBounds((y + direction), x - 1)) {
+            Piece possiblePiece = moveHelper.diagonalLeft(y, x, 1, direction);
+            takePiece(y, y + direction, x, x - 1, possiblePiece);
+        }
+
+        if (moveHelper.checkMoveWithinBounds((y + direction), x + 1)) {
+            Piece possiblePiece = moveHelper.diagonalRight(y,x,1,direction);
+            takePiece(y, y + direction, x, x + 1, possiblePiece);
+        }
+
+    }
+
+    private int getDirection() {
+        if (this.getColor() == Color.WHITE) {
+            return -1;
+        }
+        return 1;
+    }
+
+
+    private void checkMove(int y, int toY, int x, int toX) {
+        int tempValue = 0;
+        moves.add(new Move(tempValue, y, toY, x, toX));
+        }
+
+
+    private void takePiece(int y, int toY, int x, int toX, Piece possiblePiece) {
+        if (possiblePiece != null && possiblePiece.getColor() != this.getColor()) {
+            moves.add(new Move(possiblePiece.getValue(), y, toY, x, toX));
+        }
+    }
+
 }
+
+
