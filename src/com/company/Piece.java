@@ -3,7 +3,7 @@ package com.company;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class Piece {
+public class Piece implements iMove {
     ArrayList<Move> moves;
     public boolean firstMove;
     private Color color;
@@ -33,7 +33,8 @@ public class Piece {
         return color;
     }
 
-    public boolean checkMove(int y,int toY, int x, int toX, Piece possiblePiece){
+    @Override
+    public boolean checkMove(int y, int toY, int x, int toX, Piece possiblePiece){
         boolean foundPiece = false;
         int tempvalue = 0;
         if (possiblePiece == null) {
@@ -88,6 +89,7 @@ public class Piece {
 
     }
 
+    @Override
     public ArrayList<Move> listPossibleMoves(int y, int x){
         ArrayList<Move> moves = new ArrayList<>();
         return moves;
