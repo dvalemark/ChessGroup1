@@ -22,8 +22,6 @@ public class King extends Piece {
         leftDiagonalUpDown(y,x,-1);
         rightDiagonalDown(y,x,1);
         rightDiagonalUp(y,x,1);
-
-        System.out.println(moves);
         return moves;
     }
 
