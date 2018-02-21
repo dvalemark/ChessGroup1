@@ -3,7 +3,7 @@ package com.company;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class Piece {
+public class Piece implements iMove {
     ArrayList<Move> moves;
     public boolean firstMove;
     private Color color;
@@ -31,6 +31,23 @@ public class Piece {
 
     public Color getColor() {
         return color;
+    }
+
+    @Override
+    public boolean checkMove(int y, int toY, int x, int toX, Piece possiblePiece){
+        boolean foundPiece = false;
+        int tempvalue = 0;
+        if (possiblePiece == null) {
+            moves.add(new Move(tempvalue, y, toY, x, toX));
+        } else {
+            if (possiblePiece.getColor() == this.getColor()) {
+                foundPiece = true;
+            } else {
+                moves.add(new Move(possiblePiece.value, y, toY, x, toX));
+                foundPiece = true;
+            }
+        }
+        return foundPiece;
     }
 
     public void imagePath() {
@@ -72,7 +89,8 @@ public class Piece {
 
     }
 
-    public ArrayList<Move> checkMoves(int y, int x){
+    @Override
+    public ArrayList<Move> listPossibleMoves(int y, int x){
         ArrayList<Move> moves = new ArrayList<>();
         return moves;
     }
